@@ -1,3 +1,19 @@
+-- analyseDocuments  ["joao","jukera","joice","janjam","joao","abababa","jukera","aiueauihea"] ["jukera","joao","oi","falou","oi","abababa","jukera"]
+--Conteúdo reaproveitado do CATP2 somatorio lst = foldr (+) 0 lst
+
+pow x = x * x
+mapsq lst = map pow lst
+norma lst = sqrt (somatorio (mapsq lst))
+
+mult (x, y)= x * y
+mapmult lst = map mult lst
+multlst lst = (somatorio (mapmult lst))
+prod_int lst1 lst2 = multlst(zip lst1 lst2)
+
+similarity list1 list2 = (prod_int list1 list2) / (norma list1 * norma list2)
+-- Fim conteúdo reaproveitado do CATP 4
+
+
 --Compara 2 strings e retorna 1.0 em caso de True e 0.0 em caso de False
 cmpStr :: String -> String -> Float
 cmpStr str1 str2
