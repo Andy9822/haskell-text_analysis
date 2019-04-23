@@ -45,9 +45,13 @@ countOccurrences phrase (h:t) = (countStr h phrase) : (countOccurrences phrase t
 listOccurrences :: [String] -> [String] -> [Float]
 listOccurrences phrase unicElements = countOccurrences phrase unicElements
 
+relativeMean :: Int -> Float -> Float
+relativeMean numWords element = element / fromIntegral  numWords
+
 -- Função principal que faz um zip dos elementos únicos da lista, que se recebe como parametro, com uma lista das ocorrencias desses mesmos elementos
 pesosPalavras :: [String] -> [(String,Float)]
-pesosPalavras list = zip unicElements elemOccurences
+pesosPalavras list = zip unicElements weightedOccurences
                      where unicElements = rmvDuplicates list
-                           numElements = length list
+                           numWords = length list
                            elemOccurences = listOccurrences list unicElements
+                           weightedOccurences = map(relativeMean numWords) elemOccurences
