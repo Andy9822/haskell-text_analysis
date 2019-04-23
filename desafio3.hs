@@ -1,6 +1,7 @@
 -- analyseDocuments  ["joao","jukera","joice","janjam","joao","abababa","jukera","aiueauihea"] ["jukera","joao","oi","falou","oi","abababa","jukera"]
 --Conteúdo reaproveitado do CATP2 somatorio lst = foldr (+) 0 lst
 
+somatorio lst = foldr (+) 0 lst
 pow x = x * x
 mapsq lst = map pow lst
 norma lst = sqrt (somatorio (mapsq lst))
