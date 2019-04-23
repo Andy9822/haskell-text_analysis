@@ -74,3 +74,14 @@ pesosPalavras list = zip unicElements weightedOccurences
                            weightedOccurences = map(relativeMean numWords) elemOccurences
 
 
+-- Função que recebe 2 listas de strings e retorna todas as palavras unicas considerando todos os elementos das 2 listas
+extractAllWords :: [String] -> [String] -> [String]
+extractAllWords list1 list2 = rmvDuplicates(rmvDuplicates list1 ++ rmvDuplicates list2)
+
+
+-- Função que recebe 2 listas de strings e calcula similaridade entre elas usando a função de similaridade por cosseno
+analyseDocuments list1 list2 = similarity scoreL1 scoreL2
+                               --zip allWords (zip scoreL1 scoreL2)
+                   where allWords = extractAllWords list1 list2
+                         scoreL1 = listOccurrences list1 allWords
+                         scoreL2 = listOccurrences list2 allWords
