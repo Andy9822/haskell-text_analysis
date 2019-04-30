@@ -1,5 +1,5 @@
--- analyseDocuments  ["joao","jukera","joice","janjam","joao","abababa","jukera","aiueauihea"] ["jukera","joao","oi","falou","oi","abababa","jukera"]
---Conteúdo reaproveitado do CATP2 somatorio lst = foldr (+) 0 lst
+
+--Conteúdo reaproveitado do CATP2 somatorio
 
 somatorio lst = foldr (+) 0 lst
 pow x = x * x
@@ -69,6 +69,9 @@ extractAllWords list1 list2 = rmvDuplicates(rmvDuplicates list1 ++ rmvDuplicates
 
 
 -- Função que recebe 2 listas de strings e calcula similaridade entre elas usando a função de similaridade por cosseno
+-- Exemplo de chamada
+-- analyseDocuments  ["joao","jukera","joice","janjam","joao","abababa","jukera","aiueauihea"] ["jukera","joao","oi","falou","oi","abababa","jukera"]
+
 analyseDocuments list1 list2 = similarity scoreL1 scoreL2
                                --zip allWords (zip scoreL1 scoreL2)
                    where allWords = extractAllWords list1 list2
