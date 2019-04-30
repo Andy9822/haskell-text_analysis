@@ -55,3 +55,21 @@ pesosPalavras list = zip unicElements weightedOccurences
                            numWords = length list
                            elemOccurences = listOccurrences list unicElements
                            weightedOccurences = map(relativeMean numWords) elemOccurences
+
+
+--Funcao dummy so para depois poder exemplificar como passar uma funcao de calculo de peso por parametro
+foo :: Float -> Float
+foo num =  num / fromIntegral 19
+
+-- Função que calcula os pesos das palavras no texto e usa uma funcao para esse calculo recebida como parametro
+-- Exemplo de chamada:
+-- pesosPalavrasFlex foo ["joao", "amava", "teresa", "que", "amava", "raimundo", "que", "amava", "maria", "que", "amava", "joaquim", "que", "amava", "Lili", "que", "nao", "amava", "ninguem"]
+-- pesosPalavrasFlex (relativeMean 19) ["joao", "amava", "teresa", "que", "amava", "raimundo", "que", "amava", "maria", "que", "amava", "joaquim", "que", "amava", "Lili", "que", "nao", "amava", "ninguem"]
+-- pesosPalavrasFlex (relativeMean (length list) ) list
+-- P.S. minha funcao relativeMean precisa de um parametro, logo precisaria se passar a funcao como parametro juntamente com seu argumento (relativeMean 19) ou (relativeMean tamanhoDaListaPassada)
+pesosPalavrasFlex :: (Float ->  Float) -> [String] -> [(String,Float)]
+pesosPalavrasFlex func list = zip unicElements weightedOccurences
+                     where unicElements = rmvDuplicates list
+                           numWords = length list
+                           elemOccurences = listOccurrences list unicElements
+                           weightedOccurences = map func elemOccurences
